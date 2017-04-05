@@ -1,0 +1,96 @@
+.view {
+    width: 700px;
+    margin: 40px auto;
+    border: 10px solid #fff;
+}
+
+.tab {
+    width: 100%;
+    height: 400px;
+    position: relative;
+}
+
+.tab-left {
+    width: 100%;
+}
+
+.tab-left img {
+    width: 100%;
+    height: 400px;
+    display: none;
+    float: left;
+}
+
+.tab-left img.active {
+    display: block;
+}
+
+.tab-right {
+    position: absolute;
+    right: 0;
+    z-index: 100;
+}
+
+.tab-right ul {
+    width: 270px;
+    background: black;
+    opacity: 0.5;
+}
+
+.tab-right ul li {
+    height: 133px;
+    color: #fff;
+    border-bottom: 1px solid #333;
+    padding: 40px 0px;
+    line-height: 1.2em;
+    cursor: pointer;
+    position: relative;
+}
+
+.tab-right ul li:last-child {
+    border-bottom: none;
+}
+
+.active:before {
+    content: '';
+    position: absolute;
+    border-top: 10px solid transparent;
+    border-right: 10px solid #ccc;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid transparent;
+    left: -21px;
+    top: 58px;
+}
+
+.mod-tab {
+    width: 100%;
+    background: rgba(202, 101, 83, 0.54);
+}
+
+.mod-tab .tabs li {
+    width: 33.3%;
+    height: 30px;
+    line-height: 30px;
+    float: left;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    text-align: center;
+}
+
+.mod-tab .tabs li:last-child {
+    border-right: none;
+}
+
+.mod-tab .tabs .active {
+    background: #87AFB2;
+}
+
+.mod-tab .panel {
+    display: none;
+    height: 200px;
+    padding: 30px;
+}
+
+.mod-tab .active {
+    display: block;
+}

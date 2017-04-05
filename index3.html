@@ -1,0 +1,209 @@
+<html><!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>jquery常见效果</title>
+        
+<script type="text/javascript" src="jquery-3.1.1/jquery-3.1.1.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/base.css">
+        <link rel="stylesheet" type="text/css" href="css/index3.css">
+    </head>
+    <body>
+        <div class='container'>
+            <div id='header'>
+                <h3>jquery的常见特效---回到顶部</h3>
+                <p>滚动滑动条后，查看右下角效果，点击top，即可返回网页顶部</p>
+               <ul class='clearfix'>
+                    <li><a href='index.html'>懒加载</a></li>
+                    <li><a href='index2.html'>tab切换</a></li>
+                    <li><a href='index3.html'>回到顶部</a></li>
+                    <li><a href="album/index.html" target="_blank">简单的相册</a></li>
+                    <li><a href="slider/slider.html" target="_blank">轮播</a></li>
+                    <li><a href="form/form.html" target="_blank">菜单栏</a></li>
+                    <li><a href="calculator/calculator.html" target="_blank">简单的计算机</a></li>
+                </ul>
+            </div>
+            <div class='view'>
+                <ul class='lazyLoading clearfix'>
+                    <li>
+                        <a href='#'>
+                            <img src='' data-src='imgs/cat.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='' data-src='imgs/cat.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='' data-src='imgs/cat.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='' data-src='imgs/cat.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='' data-src='imgs/cat.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='' data-src='imgs/cat.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='' data-src='imgs/cat.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='' data-src='imgs/cat.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='' data-src='imgs/cat.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='' data-src='imgs/cat.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='' data-src='imgs/cat.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='' data-src='imgs/cat.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='' data-src='imgs/cat.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='' data-src='imgs/cat.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='' data-src='imgs/cat.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='' data-src='imgs/cat.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='' data-src='imgs/cat.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='' data-src='imgs/cat.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='' data-src='imgs/cat.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='' data-src='imgs/cat.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='' data-src='imgs/cat.jpg'>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class='goTop'>Top</div>
+
+        </div>
+      
+        <script>
+           var lazyLoading={
+                init:function($imgs) {
+                    this.$ct=$('.lazyLoading');
+                    this.items=this.$ct.children();
+                    this.bind();
+                    this.$target=$imgs
+                    console.log(this.$target)
+                },
+                bind:function() {
+                    var $cur=this;
+                    $(window).on('scroll',function() {
+                      $cur.checkShow();
+                    });
+                },
+                checkShow:function() {
+                    var $cur=this;
+                   $cur.$target.each(function() {
+                        var $cur1=$(this);
+                        if($cur.isShow($cur1)) {
+                           setTimeout(function() {
+                                $cur.showImg($cur1)
+                           },1000)
+                        }
+                   });
+                },
+                isShow:function($el) {
+                    var $cur=this;
+                    var winH=$(window).height();
+                    var offsetH=$el.offset().top;
+                    var scrollT=$(window).scrollTop();
+                    if(offsetH<winH+scrollT) {
+                        return true;
+                    }else {
+                     
+                      
+                        return false;
+                    }
+                },
+                showImg:function($el) {
+                    var $cur=this;
+                    $el.attr('src',$el.attr('data-src'));
+                }
+                
+           }
+           lazyLoading.init($('.lazyLoading li img'));
+
+            var goTop={
+                init:function() {
+                    this.goTop=$('.goTop');
+                    this.bind();
+                },
+                bind:function() {
+                    var $cur=this;
+                    $(window).on('scroll',function() {
+                        var scrollT=$(window).scrollTop();
+                        if(scrollT>200) {
+                            $cur.goTop.show();
+                        }else {
+                            $cur.goTop.hide();
+                        }
+                    });
+                    $cur.goTop.on('click',function() {
+                        $(window).scrollTop(0);
+                    })
+                }
+            }
+            goTop.init();
+        </script>
+    </body>
+</html>

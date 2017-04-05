@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>jquery常见效果</title>
+    <script type="text/javascript" src="jquery-3.1.1/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/index2.css">
+</head>
+
+<body>
+    <div id='header'>
+        <h3>jquery的常见特效---tab切换</h3>
+        <p>利用jquery实现一些特效，如懒加载、tab切换</p>
+        <ul class='clearfix'>
+            <li><a href='index.html'>懒加载</a></li>
+            <li><a href='index2.html'>tab切换</a></li>
+            <li><a href='index3.html'>回到顶部</a></li>
+            <li><a href="album/index.html" target="_blank">简单的相册</a></li>
+            <li><a href="slider/slider.html" target="_blank">轮播</a></li>
+            <li><a href="form/form.html" target="_blank">菜单栏</a></li>
+            <li><a href="calculator/calculator.html" target="_blank">简单的计算机</a></li>
+        </ul>
+    </div>
+    <div class='view'>
+        <div class='tab'>
+            <div class='tab-left'>
+                <img src='imgs/cat4.jpg' class='active'>
+                <img src='imgs/cat5.jpg'>
+                <img src='imgs/cat6.jpg'>
+            </div>
+            <div class='tab-right'>
+                <ul>
+                    <li>
+                        <a>cute cat1</a>
+                    </li>
+                    <li>
+                        <a>cute cat2</a>
+                    </li>
+                    <li class='active1'>
+                        <a>cute cat3</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+    var $imgs = $('.tab-left img');
+    var $lis = $('.tab-right ul li');
+    $lis.on('mouseenter', function() {
+        $cur = $(this);
+        var idx = $cur.index();
+        $imgs.removeClass('active').eq(idx).addClass('active');
+        $lis.removeClass('active1').eq(idx).addClass('active1');
+    });
+    </script>
+</body>
+
+</html>
